@@ -1,4 +1,4 @@
-# Smart Log Processor
+# 🚀 Smart Log Processor
 
 Project demonstrates a parallel log processing using the standard library's
 `concurrent.futures.ProcessPoolExecutor`.
@@ -8,19 +8,19 @@ filters lines that contain `ERROR` (case-insensitive), and counts them using a
 process pool for parallel processing. The included `main.py` currently uses
 `mock_data` for fast local testing.
 
-Key features
+🛠️ Key features
 
 - Simple, dependency-free Python script (standard library only).
 - Example of splitting work across processes with `ProcessPoolExecutor`.
 - Streaming-friendly `log_reader` generator (easy to replace with file reads).
 - Small, clear `clean_log` function suitable for unit testing and extension.
 
-Requirements
+📋 Requirements
 
 - Python 3.10+ recommended (the code uses modern type syntax like `str | None`).
 - No external packages required.
 
-Quick start
+▶️ Quick start
 
 1. Run the script:
 
