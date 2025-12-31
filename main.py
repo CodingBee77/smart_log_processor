@@ -16,6 +16,9 @@ def clean_log(line):
     return None
 
 
+def process_logs():
+    pass
+
+
 if __name__ == "__main__":
     process_logs("large_system.log")
-    pass
