@@ -41,5 +41,19 @@ def process_logs(file_path: Path):
 
 if __name__ == "__main__":
     start = time.perf_counter()
-    process_logs("large_system.log")
+    process_logs(Path("./large_system.log"))
     print(f"Finished in {time.perf_counter() - start:.4f} seconds.")
+
+
+# TODO 1: Add CLI argument parsing (argparse) to accept input file path, number of workers, and chunksize.
+# TODO 2: Make `process_logs` return the count instead of printing it for better composability and easier testing.
+# TODO 3: Add structured output (JSON/CSV) and streaming writes for downstream tools.
+# TODO 4: Add logging, metrics, and error handling for robustness in production.
+
+
+# Testing and development
+#
+# - `clean_log` is a pure function: write unit tests asserting behavior for
+#   matching and non-matching inputs.
+# - Add a small integration test that feeds a temporary file through `process_logs`
+#   and asserts the printed count (or refactor to return counts for easier testing).
