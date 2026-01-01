@@ -1,19 +1,59 @@
 # This script generates a mock log file named `large_system.log` with 10,000 lines for testing purposes.
 
 messages = [
-    "Info: system ok",
-    "Error: disk full",
-    "Debug: trace",
-    "ERROR: auth fail",
+    {
+        "timestamp": "2025-12-31T14:23:45.123Z",
+        "level": "ERROR",
+        "service": "payment-api",
+        "version": "1.4.2",
+        "host": "api-prod-3",
+        "pid": 1427,
+        "duration_ms": 427,
+        "tags": ["payments", "critical"],
+    },
+    {
+        "timestamp": "2024-11-12T14:45:43.123Z",
+        "level": "INFO",
+        "service": "payment-api",
+        "version": "1.4.2",
+        "host": "api-prod-3",
+        "pid": 1434,
+        "duration_ms": 426,
+        "tags": ["payments", "critical"],
+    },
+    {
+        "timestamp": "2023-12-02T11:24:45.123Z",
+        "level": "DEBUG",
+        "service": "payment-api",
+        "version": "1.4.2",
+        "host": "api-prod-3",
+        "pid": 1227,
+        "duration_ms": 227,
+        "tags": ["payments", "critical"],
+    },
+    {
+        "timestamp": "2025-04-13T14:23:44.123Z",
+        "level": "WARNING",
+        "service": "payment-api",
+        "version": "1.4.2",
+        "host": "api-prod-3",
+        "pid": 445,
+        "duration_ms": 145,
+        "tags": ["payments", "critical"],
+    },
 ]
 
 n_lines = 10_000
-path = "large_system.log"
+path = "large_system_extended.log"
 
 with open(path, "w", encoding="utf-8") as f:
     for i in range(n_lines):
-        f.write(messages[i % len(messages)] + "\n")
+        msg = messages[i % len(messages)]
+        line = (
+            f"{msg['timestamp']} | {msg['level']} | {msg['service']} | v{msg['version']} | "
+            f"{msg['host']} | PID:{msg['pid']} | Duration:{msg['duration_ms']}ms | "
+            f"Tags:{','.join(msg['tags'])}\n"
+        )
+        f.write(line)
 
 print(f"Created `{path}` with {n_lines} lines.")
-
-# {"timestamp":"2025-12-31T14:23:45.123Z","level":"ERROR","service":"payment-api","version":"1.4.2","host":"api-prod-3","pid":1427,"thread":"Thread-9","trace_id":"4f8b2a1e9c3d4f5a","span_id":"a1b2c3d4","msg":"Failed to charge card","error":{"type":"StripeError","message":"card_declined","code":"card_declined"},"request":{"method":"POST","path":"/v1/charges","id":"req_9a8b7c"},"user":{"id":"user_1234","email":"redacted@example.com"},"duration_ms":427,"tags":["payments","critical"]}
