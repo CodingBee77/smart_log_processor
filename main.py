@@ -7,18 +7,9 @@ from typing import Any, Generator
 
 def log_reader(file_path: Path) -> Generator[str, Any, None]:
     """Generator to read a file line by line."""
-    # with open(file_path, "r") as f:
-    #     for line in f:
-    #         yield line.strip()
-
-    mock_data = [
-        "Info: system ok",
-        "Error: disk full",
-        "Debug: trace",
-        "ERROR: auth fail",
-    ] * 10000
-    for line in mock_data:
-        yield line
+    with open(file_path, "r") as f:
+        for line in f:
+            yield line.strip()
 
 
 def clean_log(line: str) -> str | None:
