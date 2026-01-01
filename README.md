@@ -40,14 +40,6 @@ numbers and runtime are representative only.
 
 Adapting to real logs
 
-- Replace the `mock_data` block inside `log_reader` with a real file iterator:
-
-```python
-with open(file_path, "r", encoding="utf-8") as f:
-    for line in f:
-        yield line.rstrip("\n")
-```
-
 - Call `process_logs(Path("/path/to/your/logfile.log"))` or run the script
   with a modified `if __name__ == "__main__":` block to accept CLI args.
 
